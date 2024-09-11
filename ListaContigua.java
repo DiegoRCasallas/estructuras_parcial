@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class ListaContigua {
     private int[] elementos;
     private int tamanio;
@@ -12,9 +14,6 @@ public class ListaContigua {
 
     // Métodos básicos
     public void agregar(int elemento) {
-        if (tamanio == capacidad) {
-            expandir();
-        }
         elementos[tamanio] = elemento;
         tamanio++;
     }
@@ -37,13 +36,18 @@ public class ListaContigua {
         tamanio--;
     }
 
-        
-    
-    private void expandir() {
-        int nuevaCapacidad = capacidad * 2;
-        int[] nuevosElementos = new int[nuevaCapacidad];
-        System.arraycopy(elementos, 0, nuevosElementos, 0, tamanio);
-        elementos = nuevosElementos;
-        capacidad = nuevaCapacidad;
+    public ListaContigua llenarLista1() {
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(21);
+        ListaContigua lista = new ListaContigua(numeroAleatorio);
+
+        for (int i = 0; i < numeroAleatorio - 1; i++) {
+            int num = random.nextInt(501) + 50;
+            lista.agregar(num);
+        }
+
+        return lista;
+
     }
+
 }
